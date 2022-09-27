@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chennai House Price Predictor</title>
+</head>
+<body>
+<p></p>
+<h1>  Welcome to the Chennai House Price Predictor</h1>
+<p> Enter the following details to predict the price of the house you are expecting.</p>
+<section>
+    <form action="." method="POST"> {% csrf_token %}
+       <p><label for="sqft">Built Area: </label> <input type="number" id="sqft" name="sqft" autofocus required></p>
+        <p><label for="rooms">Total number of Rooms: <input type="number" min=1 max=7 step=1 id="rooms" name="rooms" required></label></p>
+        <p><label for="btype">Build Type: <select id="btype" name="btype" required>
+            <option value="house">House</option>
+            <option value="commercial">Commercial</option>
+            <option value="other">Other</option>
+        </select></label></p>
+        <p><label for="area">Locality: <select id="area" name="area" required>
+            <option value=0>Karapakkam</option>
+            <option value=1>Adyar</option>
+            <option value=2>Chrompet</option>
+            <option value=3>Velachery</option>
+            <option value=4>KK Nagar</option>
+            <option value=5>Anna Nagar</option>
+            <option value=6>T Nagar</option>
+        </select></label></p>
+        <p><label for="roomsB">No of Bedrooms<input type="number" min=1 max=5 step=1 id="roomsB" name="roomsB" required></label></p>
+        <p><label for="park">Parking Facility Available: <select id="park" name="park" required>
+            <option value=1>Yes</option>
+            <option value=0>No</option>
+        </select></label></p>
+        <p><label for="street">Street type: <select id="street" name="street" required>
+            <option value=0>No Access</option>
+            <option value=1>Paved</option>
+            <option value=2>Gravel</option>
+        </select></label> </p>
+        <p><label for="mzzone"><select id="mzzone" name="mzzone" required>
+            <option value=0>Agricultural</option>
+            <option value=1>Commercial</option>
+            <option value=2>Industrial</option>
+            <option value=4>Residential High</option>
+            <option value=5>Residential Low</option>
+            <option value=6>Residential Medium</option>
+        </select> </label> </p>
+        <p><label for="age">Age of the house in years: <input type="number" min=1 step=1 id="age" name="age" required></label></p>
+        <p><label for="util">Utility Available: <select id="util" name="util">
+            <option value=0>ELO</option>
+            <option value=2>All Public</option>
+            <option value=1>No Sewer</option>
+        </select> </label> </p>
+        <p><label for="builtYear">Year House was built: <input type="number" min=1900 max=2020 step=1 id="builtYear" name="builtYear" required></label> </p>
+        <p></p>
+        <p><button type="submit">Submit</button> </p>
+        <p><button type="reset">Reset Form</button> </p>
+    </form>
+
+{% if request.method == "POST" %}
+    <p></p>
+    <h2>The house you are seeking will cost between {{ Lowr }}L and {{ Highr }}L </h2>
+    {% endif %}
+</section>
+</body>
+</html>
